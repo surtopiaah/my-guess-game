@@ -35,7 +35,12 @@ int main(void)
         }
         else
         {
-            printf("Correct! You needed %d attempts. \n", attempts);
+            if (attempts == 1) {
+                printf("Correct! You needed %d attempt.\n", attempts);
+            } else {
+                printf("Correct! You needed %d attempts.\n", attempts);
+            }
+
         }
     }
 
