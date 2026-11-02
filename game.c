@@ -13,7 +13,16 @@ int main(void)
     while (guess != secret)
     {
         printf("Your guess: ");
-        scanf("%d", &guess);
+        int result = scanf("%d", &guess);
+
+        if (result != 1) { //checks whether the input failed
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) { } // EOF = end of file, a safety check; { } tells C, that the body is empty, so the loop ends here, and the printf below is a separate step that runs once afterwards
+            //can also use: while ((c = getchar()) != '\n' && c != EOF); 
+            printf("Please type a number. \n");
+            continue; // jumps back to the top of the loop, skipping attempts++, etc
+        }
+
         attempts++;
 
         if (guess < secret)
